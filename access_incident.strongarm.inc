@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * access_incident_.strongarm.inc
+ * access_incident.strongarm.inc
  */
 
 /**

@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * access_incident_.features.field.inc
+ * access_incident.features.field.inc
  */
 
 /**
@@ -383,92 +383,6 @@ function access_incident_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '2',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-access_incident-field_admin1_2'.
-  $fields['node-access_incident-field_admin1_2'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '-1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_admin1_2',
-      'field_permissions' => array(
-        'type' => '0',
-      ),
-      'foreign keys' => array(
-        'tid' => array(
-          'columns' => array(
-            'tid' => 'tid',
-          ),
-          'table' => 'taxonomy_term_data',
-        ),
-      ),
-      'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'taxonomy',
-      'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'locations',
-            'parent' => '0',
-          ),
-        ),
-      ),
-      'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'access_incident',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Please also mark place on map.',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '12',
-        ),
-        'entityreference_view_widget' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'ical' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_admin1_2',
-      'label' => 'Location',
-      'required' => 1,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'hs_taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_hs',
-        'weight' => '4',
       ),
     ),
   );
@@ -984,7 +898,8 @@ function access_incident_field_default_fields() {
         'handler_settings' => array(
           'behaviors' => array(
             'test_field_behavior' => array(
-              'status' => 0,
+              'status' => 1,
+              'test_field' => 1,
             ),
             'views-select-list' => array(
               'status' => 1,
@@ -1037,7 +952,7 @@ function access_incident_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_targetted_actor',
-      'label' => 'Targetted Organization',
+      'label' => 'Affected Organization',
       'required' => 1,
       'settings' => array(
         'behaviors' => array(
@@ -1045,7 +960,8 @@ function access_incident_field_default_fields() {
             'status' => TRUE,
           ),
           'test_instance_behavior' => array(
-            'status' => 0,
+            'status' => 1,
+            'test_instance' => 1,
           ),
         ),
         'user_register_form' => FALSE,
@@ -1181,16 +1097,14 @@ function access_incident_field_default_fields() {
   // Included for use with string extractors like potx.
   t('A field replacing node title.');
   t('Access Constraints & Incident Types');
+  t('Affected Organization');
   t('Description');
   t('Impact');
   t('Incident Date');
   t('Incident Impact');
-  t('Location');
   t('Mark on Map');
-  t('Please also mark place on map.');
   t('Responsible Actor');
   t('Sector(s)/Cluster(s)');
-  t('Targetted Organization');
   t('Title');
   t('Value');
 

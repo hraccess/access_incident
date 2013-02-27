@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Code for the Access Incident  feature.
+ * Code for the Access Incident feature.
  */
 
 include_once 'access_incident.features.inc';
