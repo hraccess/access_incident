@@ -132,11 +132,7 @@ function access_incident_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'field_incident_impact_new',
-      'default_value' => array(
-        0 => array(
-          'value' => '0',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -296,47 +292,58 @@ function access_incident_field_default_fields() {
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => '12',
+        'weight' => '10',
       ),
     ),
   );
 
-  // Exported field: 'node-access_incident-field_access_constraints'.
-  $fields['node-access_incident-field_access_constraints'] = array(
+  // Exported field: 'node-access_incident-field_access_constraint_acc_inc'.
+  $fields['node-access_incident-field_access_constraint_acc_inc'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_access_constraints',
+      'field_name' => 'field_access_constraint_acc_inc',
       'field_permissions' => array(
         'type' => '0',
       ),
       'foreign keys' => array(
-        'tid' => array(
+        'node' => array(
           'columns' => array(
-            'tid' => 'tid',
+            'target_id' => 'nid',
           ),
-          'table' => 'taxonomy_term_data',
+          'table' => 'node',
         ),
       ),
       'indexes' => array(
-        'tid' => array(
-          0 => 'tid',
+        'target_id' => array(
+          0 => 'target_id',
         ),
       ),
       'locked' => '0',
-      'module' => 'taxonomy',
+      'module' => 'entityreference',
       'settings' => array(
-        'allowed_values' => array(
-          0 => array(
-            'vocabulary' => 'access_constraints_incident_type',
-            'parent' => '0',
+        'handler' => 'views',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'test_field_behavior' => array(
+              'status' => 0,
+            ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'view' => array(
+            'args' => array(),
+            'display_name' => 'entityreference_1',
+            'view_name' => 'access_constraints_for_access_incident',
           ),
         ),
+        'target_type' => 'taxonomy_term',
       ),
       'translatable' => '0',
-      'type' => 'taxonomy_term_reference',
+      'type' => 'entityreference',
     ),
     'field_instance' => array(
       'bundle' => 'access_incident',
@@ -346,10 +353,12 @@ function access_incident_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
-          'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 14,
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 18,
         ),
         'entityreference_view_widget' => array(
           'label' => 'above',
@@ -371,10 +380,18 @@ function access_incident_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_access_constraints',
-      'label' => 'Access Constraints & Incident Types',
-      'required' => 1,
+      'field_name' => 'field_access_constraint_acc_inc',
+      'label' => 'Access Constraint',
+      'required' => 0,
       'settings' => array(
+        'behaviors' => array(
+          'taxonomy-index' => array(
+            'status' => TRUE,
+          ),
+          'test_instance_behavior' => array(
+            'status' => 0,
+          ),
+        ),
         'user_register_form' => FALSE,
       ),
       'widget' => array(
@@ -383,6 +400,92 @@ function access_incident_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '2',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-access_incident-field_admin1_2'.
+  $fields['node-access_incident-field_admin1_2'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_admin1_2',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'locations',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'access_incident',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 15,
+        ),
+        'entityreference_view_widget' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'ical' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_admin1_2',
+      'label' => 'Location',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'hs_taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_hs',
+        'weight' => '4',
       ),
     ),
   );
@@ -560,7 +663,114 @@ function access_incident_field_default_fields() {
         'module' => 'field_collection',
         'settings' => array(),
         'type' => 'field_collection_embed',
-        'weight' => '11',
+        'weight' => '9',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-access_incident-field_incident_type_acc_incident'.
+  $fields['node-access_incident-field_incident_type_acc_incident'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_incident_type_acc_incident',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'node' => array(
+          'columns' => array(
+            'target_id' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'views',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'test_field_behavior' => array(
+              'status' => 0,
+            ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'view' => array(
+            'args' => array(),
+            'display_name' => 'entityreference_1',
+            'view_name' => 'incident_types_for_access_incident',
+          ),
+        ),
+        'target_type' => 'taxonomy_term',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'access_incident',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 17,
+        ),
+        'entityreference_view_widget' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'ical' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_incident_type_acc_incident',
+      'label' => 'Incident Type',
+      'required' => 0,
+      'settings' => array(
+        'behaviors' => array(
+          'taxonomy-index' => array(
+            'status' => TRUE,
+          ),
+          'test_instance_behavior' => array(
+            'status' => 0,
+          ),
+        ),
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '3',
       ),
     ),
   );
@@ -665,7 +875,7 @@ function access_incident_field_default_fields() {
           ),
         ),
         'type' => 'geocoder',
-        'weight' => '10',
+        'weight' => '8',
       ),
     ),
   );
@@ -776,7 +986,7 @@ function access_incident_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '5',
       ),
     ),
   );
@@ -862,7 +1072,117 @@ function access_incident_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '9',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-access_incident-field_source_of_info_acc_inc'.
+  $fields['node-access_incident-field_source_of_info_acc_inc'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_source_of_info_acc_inc',
+      'field_permissions' => array(
+        'type' => '0',
+      ),
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'access_incident',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 19,
+        ),
+        'entityreference_view_widget' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'ical' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_source_of_info_acc_inc',
+      'label' => 'Source of information',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'filtered_html' => 'filtered_html',
+            'full_html' => 'full_html',
+            'plain_text' => 'plain_text',
+            'simple' => 'simple',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'filtered_html' => array(
+                'weight' => '0',
+              ),
+              'full_html' => array(
+                'weight' => '0',
+              ),
+              'plain_text' => array(
+                'weight' => '10',
+              ),
+              'simple' => array(
+                'weight' => '0',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '11',
       ),
     ),
   );
@@ -975,7 +1295,7 @@ function access_incident_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'entityreference_autocomplete',
-        'weight' => '8',
+        'weight' => '6',
       ),
     ),
   );
@@ -1096,15 +1416,18 @@ function access_incident_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A field replacing node title.');
-  t('Access Constraints & Incident Types');
+  t('Access Constraint');
   t('Affected Organization');
   t('Description');
   t('Impact');
   t('Incident Date');
   t('Incident Impact');
+  t('Incident Type');
+  t('Location');
   t('Mark on Map');
   t('Responsible Actor');
   t('Sector(s)/Cluster(s)');
+  t('Source of information');
   t('Title');
   t('Value');
 
