@@ -1,5 +1,5 @@
 name = Access Incident
-description = Content Type, Variable, and Views
+description = Final Content Type, Variable, and Views
 core = 7.x
 package = Access Humanitarian
 version = 7.x-1.0-beta1
